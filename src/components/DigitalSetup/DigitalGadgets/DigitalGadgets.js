@@ -67,6 +67,7 @@ class DigitalGadgets extends Component {
             <div className={classes.WhiteKey4}></div>
             <div className={classes.BlackKey4}></div>
             <div className={classes.WhiteKey5}></div>
+            <div className={classes.DrumPad4}></div>
             <div className={classes.BlackKey5}></div>
             <div className={classes.WhiteKey6}></div>
             <div className={classes.BlackKey6}></div>
@@ -80,7 +81,18 @@ class DigitalGadgets extends Component {
         );
         break;
       case "fx-module":
-        gadget = <div className={classes.Cheese}></div>;
+        gadget = (
+          <div className={classes.FXModule}>
+            <div className={classes.Screen}></div>
+            <div className={classes.DrumPad1}></div>
+            <div className={classes.DrumPad4}></div>
+            <div className={classes.Fader3}></div>
+            <div className={classes.Fader4}></div>
+            <div className={classes.Knobs3}></div>
+            <div className={classes.Fader1}></div>
+            <div className={classes.CrossFader}></div>
+          </div>
+        );
         break;
       default:
         gadget = null;
