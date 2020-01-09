@@ -37,12 +37,26 @@ class DigitalSetupBuilder extends Component {
     this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
   };
 
-  removeGadgetHandler = type => {};
+  removeGadgetHandler = type => {
+    const oldCount = this.state.digitalGadgets[type];
+    const updatedCount = oldCount - 1;
+    const updatedGadgets = {
+      ...this.state.digitalGadgets
+    };
+    updatedGadgets[type] = updatedCount;
+    const priceDeduction = GADGETS_PRICES[type];
+    const oldPrice = this.state.totalPrice;
+    const newPrice = oldPrice - priceDeduction;
+    this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
+  };
   render() {
     return (
       <Aux>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
-        <BuildControls gadgetAdded={this.addGadgetHandler} />
+        <BuildControls
+          gadgetAdded={this.addGadgetHandler}
+          gadgetRemoved={this.removeGadgetHandler}
+        />
       </Aux>
     );
   }
