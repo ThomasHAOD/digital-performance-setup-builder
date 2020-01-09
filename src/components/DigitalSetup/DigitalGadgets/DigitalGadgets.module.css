@@ -203,12 +203,116 @@
   border-radius: 100%;
 }
 
-.Meat {
-  width: 80%;
-  height: 8%;
-  background: linear-gradient(#7f3608, #702e05);
+.Synth {
+  height: 10%;
+  width: 30%;
+  background: linear-gradient(darkgrey, lightgrey);
   margin: 2% auto;
-  border-radius: 15px;
+  position: relative;
+}
+.WhiteKey {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 90%;
+  position: absolute;
+  background: white;
+}
+.BlackKey {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 85%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey2 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 80%;
+  position: absolute;
+  background: white;
+}
+.BlackKey2 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 75%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey3 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 70%;
+  position: absolute;
+  background: white;
+}
+.BlackKey3 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 65%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey4 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 60%;
+  position: absolute;
+  background: white;
+}
+.BlackKey4 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 55%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey5 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 50%;
+  position: absolute;
+  background: white;
+}
+.BlackKey5 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 45%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey6 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 40%;
+  position: absolute;
+  background: white;
+}
+.BlackKey6 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 35%;
+  position: absolute;
+  background: Black;
+}
+.WhiteKey7 {
+  height: 50%;
+  width: 5%;
+  top: 49%;
+  left: 30%;
+  position: absolute;
+  background: white;
 }
 
 .Cheese {
@@ -225,11 +329,4 @@
   margin: 2% auto;
   background: linear-gradient(#228c1d, #91ce50);
   border-radius: 20px;
-}
-
-.Bacon {
-  width: 80%;
-  height: 3%;
-  background: linear-gradient(#bf3813, #c45e38);
-  margin: 2% auto;
 }

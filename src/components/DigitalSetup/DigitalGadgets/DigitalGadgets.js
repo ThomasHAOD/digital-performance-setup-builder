@@ -36,7 +36,23 @@ class DigitalGadgets extends Component {
         gadget = <div className={classes.Salad}></div>;
         break;
       case "synth":
-        gadget = <div className={classes.Bacon}></div>;
+        gadget = (
+          <div className={classes.Synth}>
+            <div className={classes.WhiteKey}></div>
+            <div className={classes.BlackKey}></div>
+            <div className={classes.WhiteKey2}></div>
+            <div className={classes.BlackKey2}></div>
+            <div className={classes.WhiteKey3}></div>
+            <div className={classes.BlackKey3}></div>
+            <div className={classes.WhiteKey4}></div>
+            <div className={classes.BlackKey4}></div>
+            <div className={classes.WhiteKey5}></div>
+            <div className={classes.BlackKey5}></div>
+            <div className={classes.WhiteKey6}></div>
+            <div className={classes.BlackKey6}></div>
+            <div className={classes.WhiteKey7}></div>
+          </div>
+        );
         break;
       case "fx-module":
         gadget = <div className={classes.Cheese}></div>;
