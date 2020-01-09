@@ -32,7 +32,7 @@ class DigitalGadgets extends Component {
         );
         break;
 
-      case "drum-machine":
+      case "drumMachine":
         gadget = (
           <div className={classes.DrumMachine}>
             <div className={classes.Screen}></div>
@@ -80,7 +80,7 @@ class DigitalGadgets extends Component {
           </div>
         );
         break;
-      case "fx-module":
+      case "fxModule":
         gadget = (
           <div className={classes.FXModule}>
             <div className={classes.Screen}></div>
