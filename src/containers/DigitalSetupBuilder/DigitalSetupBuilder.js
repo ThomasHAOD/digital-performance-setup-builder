@@ -6,11 +6,11 @@ import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
 class DigitalSetupBuilder extends Component {
   state = {
     digitalGadgets: {
-      deck: 2,
-      mixer: 1,
-      synth: 1,
-      fxModule: 1,
-      drumMachine: 1
+      deck: 0,
+      mixer: 0,
+      synth: 0,
+      fxModule: 0,
+      drumMachine: 0
     }
   };
   render() {
