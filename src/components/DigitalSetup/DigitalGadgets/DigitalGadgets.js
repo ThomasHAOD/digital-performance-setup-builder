@@ -23,16 +23,19 @@ class DigitalGadgets extends Component {
           </div>
         );
         break;
-      case "right-hand-deck":
-        gadget = <div className={classes.BreadBottom}></div>;
+      case "deck":
+        gadget = (
+          <div className={classes.Deck}>
+            <div className={classes.TurnTable}></div>
+            <div className={classes.Needle}></div>
+          </div>
+        );
         break;
-      case "left-hand-deck":
-        gadget = <div className={classes.Meat}></div>;
-        break;
+
       case "drum-machine":
         gadget = <div className={classes.Salad}></div>;
         break;
-      case "keyboard":
+      case "synth":
         gadget = <div className={classes.Bacon}></div>;
         break;
       case "fx-module":

@@ -7,9 +7,9 @@ const digitalSetup = props => {
   return (
     <div className={classes.DigitalSetup}>
       <DigitalGadgets type="mixer" />
-      <DigitalGadgets type="right-hand-deck" />
-      <DigitalGadgets type="left-hand-deck" />
-      <DigitalGadgets type="keyboard" />
+      <DigitalGadgets type="deck" />
+      <DigitalGadgets type="deck" />
+      <DigitalGadgets type="synth" />
       <DigitalGadgets type="drum-machine" />
       <DigitalGadgets type="fx-module" />
     </div>
