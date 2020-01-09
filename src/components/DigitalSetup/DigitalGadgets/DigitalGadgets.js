@@ -1,9 +1,9 @@
-import React, { Compornent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import classes from "./BurgerIngredients.module.css";
+import classes from "./BurgerIngredient.module.css";
 
-class DigitalGadgets extends Compornent {
+class DigitalGadgets extends Component {
   render() {
     let gadget = null;
 
@@ -34,7 +34,7 @@ class DigitalGadgets extends Compornent {
       default:
         gadget = null;
     }
-    return ingredient;
+    return gadget;
   }
 }
 
