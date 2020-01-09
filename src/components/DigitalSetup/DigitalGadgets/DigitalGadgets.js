@@ -11,8 +11,15 @@ class DigitalGadgets extends Component {
       case "mixer":
         gadget = (
           <div className={classes.Mixer}>
-            <div className={classes.Seeds1}></div>
-            <div className={classes.Seeds2}></div>
+            <div className={classes.Knobs1}></div>
+            <div className={classes.Knobs2}></div>
+            <div className={classes.Knobs3}></div>
+            <div className={classes.Knobs4}></div>
+            <div className={classes.Fader1}></div>
+            <div className={classes.Fader2}></div>
+            <div className={classes.Fader3}></div>
+            <div className={classes.Fader4}></div>
+            <div className={classes.CrossFader}></div>
           </div>
         );
         break;

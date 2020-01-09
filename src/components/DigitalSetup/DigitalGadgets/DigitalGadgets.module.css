@@ -15,66 +15,174 @@
   position: relative;
 }
 
-.Seeds1 {
+.Knobs1 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  background-color: black;
+  left: 10%;
+  top: 10%;
+  border-radius: 100%;
+}
+
+.Knobs1:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  left: 0%;
+  top: 150%;
+  border-radius: 100%;
+}
+
+.Knobs1:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  left: 0%;
+  top: 300%;
+  border-radius: 100%;
+}
+.Knobs2 {
   width: 10%;
   height: 10%;
   position: absolute;
   background-color: black;
   left: 30%;
-  top: 50%;
-  border-radius: 40%;
-  transform: rotate(-20deg);
+  top: 10%;
+  border-radius: 100%;
 }
 
-.Seeds1:after {
+.Knobs2:after {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: black;
-  left: -170%;
-  top: -260%;
-  border-radius: 40%;
-  transform: rotate(60deg);
-  box-shadow: inset -1px 2px black;
+  left: 0%;
+  top: 150%;
+  border-radius: 100%;
 }
 
-.Seeds1:before {
+.Knobs2:before {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: black;
-  left: 180%;
-  top: -50%;
-  border-radius: 40%;
-  transform: rotate(60deg);
-  box-shadow: inset -1px -3px black;
+  left: 0%;
+  top: 300%;
+  border-radius: 100%;
 }
-
-.Seeds2 {
+.Knobs3 {
   width: 10%;
-  height: 15%;
+  height: 10%;
   position: absolute;
   background-color: black;
-  left: 64%;
-  top: 50%;
-  border-radius: 40%;
-  transform: rotate(10deg);
-  box-shadow: inset -3px 0 black;
+  left: 60%;
+  top: 10%;
+  border-radius: 100%;
 }
 
-.Seeds2:before {
+.Knobs3:after {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: black;
-  left: 150%;
-  top: -130%;
-  border-radius: 40%;
-  transform: rotate(90deg);
-  box-shadow: inset 1px 3px black;
+  left: 0%;
+  top: 150%;
+  border-radius: 100%;
+}
+
+.Knobs3:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  left: 0%;
+  top: 300%;
+  border-radius: 100%;
+}
+.Knobs4 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  background-color: black;
+  left: 80%;
+  top: 10%;
+  border-radius: 100%;
+}
+
+.Knobs4:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  left: 0%;
+  top: 150%;
+  border-radius: 100%;
+}
+
+.Knobs4:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  left: 0%;
+  top: 300%;
+  border-radius: 100%;
+}
+.Fader1 {
+  width: 5%;
+  height: 30%;
+  position: absolute;
+  left: 12%;
+  top: 55%;
+  border-radius: 100%;
+  background: black;
+}
+.Fader2 {
+  width: 5%;
+  height: 30%;
+  position: absolute;
+  left: 32%;
+  top: 55%;
+  border-radius: 100%;
+  background: black;
+}
+.Fader3 {
+  width: 5%;
+  height: 30%;
+  position: absolute;
+  left: 62%;
+  top: 55%;
+  border-radius: 100%;
+  background: black;
+}
+.Fader4 {
+  width: 5%;
+  height: 30%;
+  position: absolute;
+  left: 82%;
+  top: 55%;
+  border-radius: 100%;
+  background: black;
+}
+.CrossFader {
+  width: 24%;
+  height: 5%;
+  position: absolute;
+  left: 38%;
+  top: 90%;
+  border-radius: 100%;
+  background: black;
 }
 
 .Meat {
