@@ -33,7 +33,27 @@ class DigitalGadgets extends Component {
         break;
 
       case "drum-machine":
-        gadget = <div className={classes.Salad}></div>;
+        gadget = (
+          <div className={classes.DrumMachine}>
+            <div className={classes.Screen}></div>
+            <div className={classes.DrumPad1}></div>
+            <div className={classes.DrumPad2}></div>
+            <div className={classes.DrumPad3}></div>
+            <div className={classes.DrumPad4}></div>
+            <div className={classes.DrumPad5}></div>
+            <div className={classes.DrumPad6}></div>
+            <div className={classes.DrumPad7}></div>
+            <div className={classes.DrumPad8}></div>
+            <div className={classes.DrumPad9}></div>
+            <div className={classes.DrumPad10}></div>
+            <div className={classes.DrumPad11}></div>
+            <div className={classes.DrumPad12}></div>
+            <div className={classes.DrumPad13}></div>
+            <div className={classes.DrumPad14}></div>
+            <div className={classes.DrumPad15}></div>
+            <div className={classes.DrumPad16}></div>
+          </div>
+        );
         break;
       case "synth":
         gadget = (
@@ -51,6 +71,11 @@ class DigitalGadgets extends Component {
             <div className={classes.WhiteKey6}></div>
             <div className={classes.BlackKey6}></div>
             <div className={classes.WhiteKey7}></div>
+            <div className={classes.Screen}></div>
+            <div className={classes.DrumPad1}></div>
+            <div className={classes.DrumPad2}></div>
+            <div className={classes.DrumPad3}></div>
+            <div className={classes.DrumPad4}></div>
           </div>
         );
         break;
