@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
 import BuildControls from "../../components/DigitalSetup/BuildControls/BuildControls";
+import { returnStatement } from "@babel/types";
 
 const GADGETS_PRICES = {
   deck: 200,
@@ -39,6 +40,9 @@ class DigitalSetupBuilder extends Component {
 
   removeGadgetHandler = type => {
     const oldCount = this.state.digitalGadgets[type];
+    if (oldCount <= 0) {
+      return;
+    }
     const updatedCount = oldCount - 1;
     const updatedGadgets = {
       ...this.state.digitalGadgets
@@ -50,12 +54,19 @@ class DigitalSetupBuilder extends Component {
     this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
   };
   render() {
+    const disabledInfo = {
+      ...this.state.digitalGadgets
+    };
+    for (let key in disabledInfo) {
+      disabledInfo[key] = disabledInfo[key] <= 0;
+    }
     return (
       <Aux>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
         <BuildControls
           gadgetAdded={this.addGadgetHandler}
           gadgetRemoved={this.removeGadgetHandler}
+          disabled={disabledInfo}
         />
       </Aux>
     );
