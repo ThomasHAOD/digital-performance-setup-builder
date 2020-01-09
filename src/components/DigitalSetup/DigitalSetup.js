@@ -10,6 +10,8 @@ const digitalSetup = props => {
       <DigitalGadgets type="right-hand-deck" />
       <DigitalGadgets type="left-hand-deck" />
       <DigitalGadgets type="keyboard" />
+      <DigitalGadgets type="drum-machine" />
+      <DigitalGadgets type="fx-module" />
     </div>
   );
 };

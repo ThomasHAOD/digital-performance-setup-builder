@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import classes from "./BurgerIngredient.module.css";
+import classes from "./DigitalGadgets.module.css";
 
 class DigitalGadgets extends Component {
   render() {
@@ -10,7 +10,7 @@ class DigitalGadgets extends Component {
     switch (this.props.type) {
       case "mixer":
         gadget = (
-          <div className={classes.BreadTop}>
+          <div className={classes.Mixer}>
             <div className={classes.Seeds1}></div>
             <div className={classes.Seeds2}></div>
           </div>
@@ -29,7 +29,7 @@ class DigitalGadgets extends Component {
         gadget = <div className={classes.Bacon}></div>;
         break;
       case "fx-module":
-        gadget = <div classname={classes.Cheese}></div>;
+        gadget = <div className={classes.Cheese}></div>;
         break;
       default:
         gadget = null;
