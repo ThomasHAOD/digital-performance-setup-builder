@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
 import BuildControls from "../../components/DigitalSetup/BuildControls/BuildControls";
-import { returnStatement } from "@babel/types";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/DigitalSetup/OrderSummary/OrderSummary";
 
 const GADGETS_PRICES = {
   deck: 200,
@@ -76,6 +77,9 @@ class DigitalSetupBuilder extends Component {
     }
     return (
       <Aux>
+        <Modal>
+          <OrderSummary gadgets={this.state.digitalGadgets} />
+        </Modal>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
         <BuildControls
           gadgetAdded={this.addGadgetHandler}
