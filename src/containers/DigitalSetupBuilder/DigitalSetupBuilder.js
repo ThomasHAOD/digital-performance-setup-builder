@@ -67,6 +67,7 @@ class DigitalSetupBuilder extends Component {
           gadgetAdded={this.addGadgetHandler}
           gadgetRemoved={this.removeGadgetHandler}
           disabled={disabledInfo}
+          price={this.state.totalPrice}
         />
       </Aux>
     );
