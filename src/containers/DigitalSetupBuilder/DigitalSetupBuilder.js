@@ -24,7 +24,8 @@ class DigitalSetupBuilder extends Component {
       drumMachine: 0
     },
     totalPrice: 800,
-    purchasable: false
+    purchasable: false,
+    purchasing: false
   };
 
   updatePurchaseState(gadgets) {
@@ -68,6 +69,11 @@ class DigitalSetupBuilder extends Component {
     this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
     this.updatePurchaseState(updatedGadgets);
   };
+
+  purchaseHandler = () => {
+    this.setState({ purchasing: true });
+  };
+
   render() {
     const disabledInfo = {
       ...this.state.digitalGadgets
@@ -77,7 +83,7 @@ class DigitalSetupBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary gadgets={this.state.digitalGadgets} />
         </Modal>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
@@ -87,6 +93,7 @@ class DigitalSetupBuilder extends Component {
           disabled={disabledInfo}
           price={this.state.totalPrice}
           purchasable={this.state.purchasable}
+          purchased={this.purchaseHandler}
         />
       </Aux>
     );
