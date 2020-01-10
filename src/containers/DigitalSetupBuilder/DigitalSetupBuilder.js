@@ -22,8 +22,20 @@ class DigitalSetupBuilder extends Component {
       fxModule: 0,
       drumMachine: 0
     },
-    totalPrice: 800
+    totalPrice: 800,
+    purchasable: false
   };
+
+  updatePurchaseState(gadgets) {
+    const sum = Object.keys(gadgets)
+      .map(gtKey => {
+        return gadgets[gtKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+    this.setState({ purchasable: sum > 0 });
+  }
 
   addGadgetHandler = type => {
     const oldCount = this.state.digitalGadgets[type];
@@ -36,6 +48,7 @@ class DigitalSetupBuilder extends Component {
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
+    this.updatePurchaseState(updatedGadgets);
   };
 
   removeGadgetHandler = type => {
@@ -52,6 +65,7 @@ class DigitalSetupBuilder extends Component {
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDeduction;
     this.setState({ totalPrice: newPrice, digitalGadgets: updatedGadgets });
+    this.updatePurchaseState(updatedGadgets);
   };
   render() {
     const disabledInfo = {
@@ -68,6 +82,7 @@ class DigitalSetupBuilder extends Component {
           gadgetRemoved={this.removeGadgetHandler}
           disabled={disabledInfo}
           price={this.state.totalPrice}
+          purchasable={this.state.purchasable}
         />
       </Aux>
     );
