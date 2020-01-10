@@ -78,6 +78,10 @@ class DigitalSetupBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
+  purchaseContinueHandler() {
+    alert("You Continue");
+  }
+
   render() {
     const disabledInfo = {
       ...this.state.digitalGadgets
@@ -85,13 +89,18 @@ class DigitalSetupBuilder extends Component {
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
+
     return (
       <Aux>
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
         >
-          <OrderSummary gadgets={this.state.digitalGadgets} />
+          <OrderSummary
+            gadgets={this.state.digitalGadgets}
+            purchaseCancelled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
+          />
         </Modal>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
         <BuildControls
