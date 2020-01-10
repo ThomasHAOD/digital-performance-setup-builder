@@ -18,6 +18,8 @@ const orderSummary = props => {
       <p>A bangin setup to wow crowds with the following equipment</p>
       <ul>{gadgetSummary}</ul>
       <p>Continue to Checkout?</p>
+      <button>CANCEL</button>
+      <button>CONTINUE</button>
     </Aux>
   );
 };
