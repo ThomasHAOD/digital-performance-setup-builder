@@ -18,6 +18,9 @@ const orderSummary = props => {
       <h3>Your Order</h3>
       <p>A bangin setup to wow crowds with the following equipment</p>
       <ul>{gadgetSummary}</ul>
+      <p>
+        <strong>Total Price: £{props.price}</strong>
+      </p>
       <p>Continue to Checkout?</p>
       <Button clicked={props.purchaseCancelled} btnType="Danger">
         CANCEL

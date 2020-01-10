@@ -97,6 +97,7 @@ class DigitalSetupBuilder extends Component {
           modalClosed={this.purchaseCancelHandler}
         >
           <OrderSummary
+            price={this.state.totalPrice}
             gadgets={this.state.digitalGadgets}
             purchaseCancelled={this.purchaseCancelHandler}
             purchaseContinued={this.purchaseContinueHandler}
