@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Aux from "../../hoc/Aux";
+import Aux from "../../hoc/Aux/Aux";
 import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
 import BuildControls from "../../components/DigitalSetup/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";

@@ -1,35 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 
-import Aux from "../../../hoc/Aux";
+import Aux from "../../../hoc/Aux/Aux";
 import Button from "../../UI/Button/Button";
 
-const orderSummary = props => {
-  const gadgetSummary = Object.keys(props.gadgets).map(key => {
+class OrderSummary extends Component {
+  componentDidUpdate() {
+    console.log("[OrderSummary] did update");
+  }
+  render() {
+    const gadgetSummary = Object.keys(this.props.gadgets).map(key => {
+      return (
+        <li key={key}>
+          <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
+          {this.props.gadgets[key]}
+        </li>
+      );
+    });
+
     return (
-      <li key={key}>
-        <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
-        {props.gadgets[key]}
-      </li>
+      <Aux>
+        <h3>Your Order</h3>
+        <p>A bangin setup to wow crowds with the following equipment</p>
+        <ul>{gadgetSummary}</ul>
+        <p>
+          <strong>Total Price: £{this.props.price}</strong>
+        </p>
+        <p>Continue to Checkout?</p>
+        <Button clicked={this.props.purchaseCancelled} btnType="Danger">
+          CANCEL
+        </Button>
+        <Button clicked={this.props.purchaseContinued} btnType="Success">
+          CONTINUE
+        </Button>
+      </Aux>
     );
-  });
+  }
+}
 
-  return (
-    <Aux>
-      <h3>Your Order</h3>
-      <p>A bangin setup to wow crowds with the following equipment</p>
-      <ul>{gadgetSummary}</ul>
-      <p>
-        <strong>Total Price: £{props.price}</strong>
-      </p>
-      <p>Continue to Checkout?</p>
-      <Button clicked={props.purchaseCancelled} btnType="Danger">
-        CANCEL
-      </Button>
-      <Button clicked={props.purchaseContinued} btnType="Success">
-        CONTINUE
-      </Button>
-    </Aux>
-  );
-};
-
-export default orderSummary;
+export default OrderSummary;
