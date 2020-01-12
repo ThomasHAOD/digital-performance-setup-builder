@@ -7,6 +7,7 @@ import BuildControls from "../../components/DigitalSetup/BuildControls/BuildCont
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/DigitalSetup/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 const GADGETS_PRICES = {
   deck: 200,
@@ -150,4 +151,4 @@ class DigitalSetupBuilder extends Component {
   }
 }
 
-export default DigitalSetupBuilder;
+export default withErrorHandler(DigitalSetupBuilder, axios);
