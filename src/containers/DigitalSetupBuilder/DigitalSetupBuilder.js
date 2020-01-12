@@ -19,18 +19,26 @@ const GADGETS_PRICES = {
 
 class DigitalSetupBuilder extends Component {
   state = {
-    digitalGadgets: {
-      deck: 0,
-      mixer: 0,
-      synth: 0,
-      fxModule: 0,
-      drumMachine: 0
-    },
-    totalPrice: 800,
+    digitalGadgets: null,
+    totalPrice: 0,
     purchasable: false,
     purchasing: false,
-    loading: false
+    loading: false,
+    error: false
   };
+
+  componentDidMount() {
+    axios
+      .get("gadgets.json")
+      .then(res => {
+        this.setState({ digitalGadgets: res.data });
+        console.log(this.state.digitalGadgets);
+      })
+      .catch(err => {
+        this.props.error(err);
+        this.setState({ error: true });
+      });
+  }
 
   updatePurchaseState(gadgets) {
     const sum = Object.keys(gadgets)
@@ -116,14 +124,33 @@ class DigitalSetupBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
 
-    let orderSummary = (
-      <OrderSummary
-        price={this.state.totalPrice}
-        gadgets={this.state.digitalGadgets}
-        purchaseCancelled={this.purchaseCancelHandler}
-        purchaseContinued={this.purchaseContinueHandler}
-      />
-    );
+    let orderSummary = null;
+
+    let setup = this.state.error ? <p>Setup cant be Loaded</p> : <Spinner />;
+
+    if (this.state.digitalGadgets) {
+      setup = (
+        <Aux>
+          <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
+          <BuildControls
+            gadgetAdded={this.addGadgetHandler}
+            gadgetRemoved={this.removeGadgetHandler}
+            disabled={disabledInfo}
+            price={this.state.totalPrice}
+            purchasable={this.state.purchasable}
+            purchased={this.purchaseHandler}
+          />
+        </Aux>
+      );
+      orderSummary = (
+        <OrderSummary
+          price={this.state.totalPrice}
+          gadgets={this.state.digitalGadgets}
+          purchaseCancelled={this.purchaseCancelHandler}
+          purchaseContinued={this.purchaseContinueHandler}
+        />
+      );
+    }
 
     if (this.state.loading) {
       orderSummary = <Spinner />;
@@ -137,15 +164,7 @@ class DigitalSetupBuilder extends Component {
         >
           {orderSummary}
         </Modal>
-        <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
-        <BuildControls
-          gadgetAdded={this.addGadgetHandler}
-          gadgetRemoved={this.removeGadgetHandler}
-          disabled={disabledInfo}
-          price={this.state.totalPrice}
-          purchasable={this.state.purchasable}
-          purchased={this.purchaseHandler}
-        />
+        {setup}
       </Aux>
     );
   }

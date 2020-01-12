@@ -17,14 +17,7 @@ const digitalSetup = props => {
   if (digitalGadgets.length === 0) {
     digitalGadgets = <p>Please Start Adding Equipment</p>;
   }
-  return (
-    <div className={classes.DigitalSetup}>
-      <DigitalGadgets type="deck" />
-      <DigitalGadgets type="mixer" />
-      <DigitalGadgets type="deck" />
-      {digitalGadgets}
-    </div>
-  );
+  return <div className={classes.DigitalSetup}>{digitalGadgets}</div>;
 };
 
 export default digitalSetup;

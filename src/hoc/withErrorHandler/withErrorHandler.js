@@ -18,6 +18,10 @@ const withErrorHandler = (WrappedComponent, axios) => {
       );
     }
 
+    errorHandler = error => {
+      this.setState({ error: error });
+    };
+
     errorConfirmedHandler = () => {
       this.setState({ error: null });
     };
@@ -31,7 +35,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
           >
             {this.state.error ? this.state.error.message : null}
           </Modal>
-          <WrappedComponent {...this.props} />
+          <WrappedComponent {...this.props} error={this.errorHandler} />
         </Aux>
       );
     }
