@@ -19,4 +19,4 @@ const modal = props => (
   </Aux>
 );
 
-export default React.memo(modal);
+export default modal;

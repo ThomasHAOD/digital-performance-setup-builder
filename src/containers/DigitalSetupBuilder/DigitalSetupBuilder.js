@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import axios from "../../axios-order";
 
 import Aux from "../../hoc/Aux/Aux";
 import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
 import BuildControls from "../../components/DigitalSetup/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/DigitalSetup/OrderSummary/OrderSummary";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const GADGETS_PRICES = {
   deck: 200,
@@ -25,7 +27,8 @@ class DigitalSetupBuilder extends Component {
     },
     totalPrice: 800,
     purchasable: false,
-    purchasing: false
+    purchasing: false,
+    loading: false
   };
 
   updatePurchaseState(gadgets) {
@@ -78,9 +81,31 @@ class DigitalSetupBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
-  purchaseContinueHandler() {
-    alert("You Continue");
-  }
+  purchaseContinueHandler = () => {
+    this.setState({ loading: true });
+    // alert("You Continue");
+    const order = {
+      gadgets: this.state.digitalGadgets,
+      price: this.state.totalPrice,
+      customer: {
+        name: "Tam O'Donnell",
+        address: {
+          street: "test street",
+          house: "10"
+        },
+        email: "test@test.com"
+      },
+      deliveryMethod: "fastest"
+    };
+    axios
+      .post("/orders.json", order)
+      .then(res => {
+        this.setState({ loading: false, purchasing: false });
+      })
+      .catch(err => {
+        this.setState({ loading: false, purchasing: false });
+      });
+  };
 
   render() {
     const disabledInfo = {
@@ -90,18 +115,26 @@ class DigitalSetupBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
 
+    let orderSummary = (
+      <OrderSummary
+        price={this.state.totalPrice}
+        gadgets={this.state.digitalGadgets}
+        purchaseCancelled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler}
+      />
+    );
+
+    if (this.state.loading) {
+      orderSummary = <Spinner />;
+    }
+
     return (
       <Aux>
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
         >
-          <OrderSummary
-            price={this.state.totalPrice}
-            gadgets={this.state.digitalGadgets}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}
-          />
+          {orderSummary}
         </Modal>
         <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
         <BuildControls
