@@ -91,29 +91,42 @@ class DigitalSetupBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
-    // alert("You Continue");
-    const order = {
-      gadgets: this.state.digitalGadgets,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Tam O'Donnell",
-        address: {
-          street: "test street",
-          house: "10"
-        },
-        email: "test@test.com"
-      },
-      deliveryMethod: "fastest"
-    };
-    axios
-      .post("/orders.json", order)
-      .then(res => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch(err => {
-        this.setState({ loading: false, purchasing: false });
-      });
+    // this.setState({ loading: true });
+    // // alert("You Continue");
+    // const order = {
+    //   gadgets: this.state.digitalGadgets,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Tam O'Donnell",
+    //     address: {
+    //       street: "test street",
+    //       house: "10"
+    //     },
+    //     email: "test@test.com"
+    //   },
+    //   deliveryMethod: "fastest"
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then(res => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   });
+    const queryParams = [];
+    for (let i in this.state.digitalGadgets) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.digitalGadgets[i])
+      );
+    }
+    const queryString = queryParams.join("&");
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryString
+    });
   };
 
   render() {

@@ -4,17 +4,33 @@ import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSumm
 
 class Checkout extends Component {
   state = {
-    gadgets: {
-      mixer: 1,
-      deck: 1,
-      synth: 1
+    gadgets: {}
+  };
+
+  componentDidMount() {
+    const query = new URLSearchParams(this.props.location.search);
+    const gadgets = {};
+    for (let param of query.entries()) {
+      gadgets[param[0]] = +param[1];
     }
+    this.setState({ gadgets: gadgets });
+  }
+
+  checkoutCancelledHandler = () => {
+    this.props.history.goBack();
+  };
+  checkoutContinuedHandler = () => {
+    this.props.history.replace("/checkout/contact-data");
   };
 
   render() {
     return (
       <div>
-        <CheckoutSummary gadgets={this.state.gadgets} />
+        <CheckoutSummary
+          gadgets={this.state.gadgets}
+          checkoutCancelled={this.checkoutCancelledHandler}
+          checkoutContinued={this.checkoutContinuedHandler}
+        />
       </div>
     );
   }

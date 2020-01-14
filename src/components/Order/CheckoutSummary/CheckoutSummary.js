@@ -11,10 +11,10 @@ const checkoutSummary = props => {
       <div style={{ width: "100%", height: "300px", margin: "auto" }}>
         <DigitalSetup digitalGadgets={props.gadgets} />
       </div>
-      <Button btnType="Danger" clicked>
+      <Button btnType="Danger" clicked={props.checkoutCancelled}>
         CANCEL
       </Button>
-      <Button btnType="Success" clicked>
+      <Button btnType="Success" clicked={props.checkoutContinued}>
         CONTINUE
       </Button>
     </div>
