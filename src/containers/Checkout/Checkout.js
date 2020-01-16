@@ -6,16 +6,22 @@ import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component {
   state = {
-    gadgets: {}
+    gadgets: {},
+    price: 0
   };
 
   componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     const gadgets = {};
+    let price = 0;
     for (let param of query.entries()) {
-      gadgets[param[0]] = +param[1];
+      if (param[0] === "price") {
+        price = param[1];
+      } else {
+        gadgets[param[0]] = +param[1];
+      }
     }
-    this.setState({ gadgets: gadgets });
+    this.setState({ gadgets: gadgets, totalPrice: price });
   }
 
   checkoutCancelledHandler = () => {
@@ -35,7 +41,13 @@ class Checkout extends Component {
         />
         <Route
           path={this.props.match.path + "/contact-data"}
-          component={ContactData}
+          render={props => (
+            <ContactData
+              gadgets={this.state.gadgets}
+              price={this.state.price}
+              {...props}
+            />
+          )}
         />
       </div>
     );

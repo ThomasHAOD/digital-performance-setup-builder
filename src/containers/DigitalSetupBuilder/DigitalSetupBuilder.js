@@ -91,29 +91,6 @@ class DigitalSetupBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    // this.setState({ loading: true });
-    // // alert("You Continue");
-    // const order = {
-    //   gadgets: this.state.digitalGadgets,
-    //   price: this.state.totalPrice,
-    //   customer: {
-    //     name: "Tam O'Donnell",
-    //     address: {
-    //       street: "test street",
-    //       house: "10"
-    //     },
-    //     email: "test@test.com"
-    //   },
-    //   deliveryMethod: "fastest"
-    // };
-    // axios
-    //   .post("/orders.json", order)
-    //   .then(res => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   });
     const queryParams = [];
     for (let i in this.state.digitalGadgets) {
       queryParams.push(
@@ -122,6 +99,7 @@ class DigitalSetupBuilder extends Component {
           encodeURIComponent(this.state.digitalGadgets[i])
       );
     }
+    queryParams.push("price=" + this.state.totalPrice);
     const queryString = queryParams.join("&");
     this.props.history.push({
       pathname: "/checkout",
