@@ -21,7 +21,7 @@ class ContactData extends Component {
     this.setState({ loading: true });
 
     const order = {
-      gadgets: this.state.digitalGadgets,
+      gadgets: this.props.gadgets,
       price: this.props.price,
       customer: {
         name: "Tam O'Donnell",
