@@ -5,6 +5,14 @@ const initialState = {
   totalPrice: 0
 };
 
+const GADGETS_PRICES = {
+  deck: 200,
+  mixer: 400,
+  synth: 450,
+  fxModule: 250,
+  drumMachine: 550
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_GADGET:
@@ -13,7 +21,8 @@ const reducer = (state = initialState, action) => {
         digitalGadgets: {
           ...state.digitalGadgets,
           [action.gadget]: state.digitalGadgets[action.gadget] + 1
-        }
+        },
+        totalPrice: state.totalPrice + GADGETS_PRICES[action.gadget]
       };
     case actionTypes.REMOVE_GADGET:
       return {
@@ -21,7 +30,8 @@ const reducer = (state = initialState, action) => {
         digitalGadgets: {
           ...state.digitalGadgets,
           [action.gadget]: state.digitalGadgets[action.gadget] - 1
-        }
+        },
+        totalPrice: state.totalPrice - GADGETS_PRICES[action.gadget]
       };
     default:
       return state;

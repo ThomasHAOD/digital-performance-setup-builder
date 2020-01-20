@@ -3,27 +3,9 @@ import { Route } from "react-router-dom";
 
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
 import ContactData from "./ContactData/ContactData";
+import { connect } from "react-redux";
 
 class Checkout extends Component {
-  state = {
-    gadgets: {},
-    price: 0
-  };
-
-  componentDidMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const gadgets = {};
-    let price = 0;
-    for (let param of query.entries()) {
-      if (param[0] === "price") {
-        price = param[1];
-      } else {
-        gadgets[param[0]] = +param[1];
-      }
-    }
-    this.setState({ gadgets: gadgets, totalPrice: price });
-  }
-
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
   };
@@ -54,4 +36,11 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+const mapStateToProps = state => {
+  return {
+    gads: state.digitalGadgets,
+    price: state.totalPrice
+  };
+};
+
+export default connect(mapStateToProps)(Checkout);
