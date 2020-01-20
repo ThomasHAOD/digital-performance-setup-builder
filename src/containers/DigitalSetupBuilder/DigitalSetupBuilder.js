@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "../../axios-order";
+import { connect } from "react-redux";
 
 import Aux from "../../hoc/Aux/Aux";
 import DigitalSetup from "../../components/DigitalSetup/DigitalSetup";
@@ -8,6 +9,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/DigitalSetup/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import * as actionTypes from "../../store/actions";
 
 const GADGETS_PRICES = {
   deck: 200,
@@ -19,7 +21,6 @@ const GADGETS_PRICES = {
 
 class DigitalSetupBuilder extends Component {
   state = {
-    digitalGadgets: null,
     totalPrice: 0,
     purchasable: false,
     purchasing: false,
@@ -28,16 +29,16 @@ class DigitalSetupBuilder extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get("gadgets.json")
-      .then(res => {
-        this.setState({ digitalGadgets: res.data });
-        console.log(this.state.digitalGadgets);
-      })
-      .catch(err => {
-        this.props.error(err);
-        this.setState({ error: true });
-      });
+    // axios
+    //   .get("gadgets.json")
+    //   .then(res => {
+    //     this.setState({ digitalGadgets: res.data });
+    //     console.log(this.state.digitalGadgets);
+    //   })
+    //   .catch(err => {
+    //     this.props.error(err);
+    //     this.setState({ error: true });
+    //   });
   }
 
   updatePurchaseState(gadgets) {
@@ -109,7 +110,7 @@ class DigitalSetupBuilder extends Component {
 
   render() {
     const disabledInfo = {
-      ...this.state.digitalGadgets
+      ...this.props.gads
     };
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
@@ -119,13 +120,13 @@ class DigitalSetupBuilder extends Component {
 
     let setup = this.state.error ? <p>Setup cant be Loaded</p> : <Spinner />;
 
-    if (this.state.digitalGadgets) {
+    if (this.props.gads) {
       setup = (
         <Aux>
-          <DigitalSetup digitalGadgets={this.state.digitalGadgets} />
+          <DigitalSetup digitalGadgets={this.props.gads} />
           <BuildControls
-            gadgetAdded={this.addGadgetHandler}
-            gadgetRemoved={this.removeGadgetHandler}
+            gadgetAdded={this.props.onGadgetAdded}
+            gadgetRemoved={this.props.onGadgetRemoved}
             disabled={disabledInfo}
             price={this.state.totalPrice}
             purchasable={this.state.purchasable}
@@ -136,7 +137,7 @@ class DigitalSetupBuilder extends Component {
       orderSummary = (
         <OrderSummary
           price={this.state.totalPrice}
-          gadgets={this.state.digitalGadgets}
+          gadgets={this.props.gads}
           purchaseCancelled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler}
         />
@@ -161,4 +162,22 @@ class DigitalSetupBuilder extends Component {
   }
 }
 
-export default withErrorHandler(DigitalSetupBuilder, axios);
+const mapStateToProps = state => {
+  return {
+    gads: state.digitalGadgets
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onGadgetAdded: gadgetName =>
+      dispatch({ type: actionTypes.ADD_GADGET, gadget: gadgetName }),
+    onGadgetRemoved: gadgetName =>
+      dispatch({ type: actionTypes.REMOVE_GADGET, gadget: gadgetName })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(DigitalSetupBuilder, axios));
