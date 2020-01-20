@@ -7,9 +7,12 @@ import { createStore } from "redux";
 import classes from "./index.module.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import reducer from "./store/reducer";
+import digitalSetupBuilderReducer from "./store/reducers/digitalSetupBuilder";
 
-const store = createStore(reducer);
+const store = createStore(
+  digitalSetupBuilderReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const app = (
   <Provider store={store}>

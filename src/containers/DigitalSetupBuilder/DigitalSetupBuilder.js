@@ -9,7 +9,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/DigitalSetup/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import * as actionTypes from "../../store/actions";
+import * as digitalSetupBuilderActions from "../../store/actions/index";
 
 class DigitalSetupBuilder extends Component {
   state = {
@@ -120,9 +120,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGadgetAdded: gadgetName =>
-      dispatch({ type: actionTypes.ADD_GADGET, gadget: gadgetName }),
+      dispatch(digitalSetupBuilderActions.addGadget(gadgetName)),
     onGadgetRemoved: gadgetName =>
-      dispatch({ type: actionTypes.REMOVE_GADGET, gadget: gadgetName })
+      dispatch(digitalSetupBuilderActions.removeGadget(gadgetName))
   };
 };
 

@@ -17,19 +17,13 @@ class Checkout extends Component {
     return (
       <div>
         <CheckoutSummary
-          gadgets={this.state.gadgets}
+          gadgets={this.props.gads}
           checkoutCancelled={this.checkoutCancelledHandler}
           checkoutContinued={this.checkoutContinuedHandler}
         />
         <Route
           path={this.props.match.path + "/contact-data"}
-          render={props => (
-            <ContactData
-              gadgets={this.state.gadgets}
-              price={this.state.price}
-              {...props}
-            />
-          )}
+          component={ContactData}
         />
       </div>
     );
@@ -38,8 +32,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    gads: state.digitalGadgets,
-    price: state.totalPrice
+    gads: state.digitalGadgets
   };
 };
 

@@ -1,4 +1,4 @@
-import * as actionTypes from "./actions";
+import * as actionTypes from "../actions/actionsTypes";
 
 const initialState = {
   digitalGadgets: { mixer: 0, deck: 0, synth: 0, drumMachine: 0, fxModule: 0 },
